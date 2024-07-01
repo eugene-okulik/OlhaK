@@ -13,7 +13,7 @@ second_element.append('last element')
 second_element.remove(4)
 
 third_element = my_dict['dict']
-third_element['color'] = 'red'
+third_element['i am a tuple'] = 'yes'
 third_element.pop('five')
 
 fourth_element = my_dict['set']
