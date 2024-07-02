@@ -9,7 +9,7 @@ print(first_element[-1])
 
 second_element = my_dict['list']
 second_element.append('last element')
-second_element.remove(4)
+second_element.pop(1)
 
 third_element = my_dict['dict']
 third_element[('i am a tuple',)] = 'yes'
