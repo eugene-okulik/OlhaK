@@ -7,11 +7,6 @@
 person = ['John', 'Doe', 'New York', '+1372829383739', 'US']
 name, last_name, city, phone, country = person
 print(name, last_name, city, phone, country)
-name = person[0]
-last_name = person[1]
-city = person[2]
-phone = person[3]
-country = person[4]
 print(f'name: {name}')
 print(f'last_name: {last_name}')
 print(f'city: {city}')
