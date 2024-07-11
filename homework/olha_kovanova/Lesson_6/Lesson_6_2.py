@@ -20,7 +20,6 @@
 # напечатано вместо них)
 # Последовательность от 1 до 100 можно создать с помощью range(1, 101)
 # Каждое задание выполняйте в отдельном файле
-
 numbers = list(range(1, 101))
 for num in numbers:
     if ((num % 3 == 0) and (num % 5 == 0)):
@@ -28,6 +27,6 @@ for num in numbers:
     elif (num % 3 == 0):
         print("Fuzz")
     elif (num % 5 == 0):
-         print("Buzz")
+        print("Buzz")
     else:
         print(num)
