@@ -13,9 +13,12 @@ result_of_1st_oper = 'результат операции: 42'
 result_of_2st_oper = 'результат операции: 54'
 result_of_3st_oper = 'результат работы программы: 209'
 result_of_4st_oper = 'результат: 2'
+
+
 def res_num(num):
     res = num.split(': ')
     return print(int(res[1]) + 10)
+
 
 res_num(result_of_1st_oper)
 res_num(result_of_2st_oper)
