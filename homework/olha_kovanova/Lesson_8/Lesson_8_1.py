@@ -18,5 +18,3 @@ if bonus == 'True':
 else:
     print(f"{salary}, {bonus} - '${salary}'")
 
-
-
