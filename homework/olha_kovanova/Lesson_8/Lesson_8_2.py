@@ -4,8 +4,8 @@
 import sys
 sys.set_int_max_str_digits(0)
 
-def fib_generator(num):
 
+def fib_generator(num):
     a, b = 0, 1
     for i in range(num):
         yield a
