@@ -5,12 +5,20 @@ import sys
 sys.set_int_max_str_digits(0)
 
 
-def fib_generator(num):
+def fibonacci_generator():
     a, b = 0, 1
-    for i in range(num):
+    while True:
         yield a
         a, b = b, a + b
 
+def get_fibonacci_number(n):
+    fib_gen = fibonacci_generator()
+    for i in range(n):
+        number = next(fib_gen)
+    return number
 
-fib_list = list(fib_generator(100000))
-print(fib_list[4], fib_list[199], fib_list[999], fib_list[99999])
+
+print("5-е число Фибоначчи:", get_fibonacci_number(5))
+print("200-е число Фибоначчи:", get_fibonacci_number(200))
+print("1000-е число Фибоначчи:", get_fibonacci_number(1000))
+print("100000-е число Фибоначчи:", get_fibonacci_number(100000))
