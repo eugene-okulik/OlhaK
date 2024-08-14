@@ -11,6 +11,7 @@ def fibonacci_generator():
         yield a
         a, b = b, a + b
 
+
 def get_fibonacci_number(n):
     fib_gen = fibonacci_generator()
     for i in range(n):
