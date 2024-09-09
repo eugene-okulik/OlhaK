@@ -29,6 +29,7 @@ def operations_managment(func):
         func(arg1, arg2, operation)
     return wrapper
 
+
 @operations_managment
 def calc(first, second, operation):
     if operation == '+':
@@ -40,5 +41,6 @@ def calc(first, second, operation):
     else:
         operation == '/'
         return print(first / second)
+
 
 calc(int(input()), int(input()))
