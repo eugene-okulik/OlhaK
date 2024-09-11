@@ -69,6 +69,7 @@ class ShoolBooks(Books):
         reservation = True
         print(reservation)
 
+
 school_book_1 = ShoolBooks('Aлгебра', 'Иванов', 200, False, 'Математика', 9, True)
 school_book_2 = ShoolBooks('История Украины', 'Носов', 200, False, 'История', 8, False)
 school_book_3 = ShoolBooks('География Европы', 'Шевченко', 200, False, 'География', 5, True)
