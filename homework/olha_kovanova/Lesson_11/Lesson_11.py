@@ -86,10 +86,10 @@ class ShoolBooks(Books):
     def book_print(self):
         if self.reserve:
             print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
-              f'предмет: {self.subject}, класс: {self.school_class}, зарезервирована')
+                  f'предмет: {self.subject}, класс: {self.school_class}, зарезервирована')
         else:
             print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
-            f'предмет: {self.subject}, класс: {self.school_class}')
+                  f'предмет: {self.subject}, класс: {self.school_class}')
 
 
 school_book_1 = ShoolBooks('Aлгебра', 'Иванов', 200, False, 'Математика', 9, True)
