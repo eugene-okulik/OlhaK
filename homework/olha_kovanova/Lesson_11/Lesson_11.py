@@ -33,15 +33,31 @@
 #
 # Название: Алгебра, Автор: Иванов, страниц: 200, предмет: Математика, класс: 9
 
+from abc import abstractmethod
+
+
 class Books:
     material = 'бумага'
     text_presence = 'yes'
 
-    def __init__(self, name, author, page_amount, reservation):
+    def __init__(self, name, author, page_amount, reserve):
         self.name = name
         self.author = author
         self.page_amount = page_amount
-        self.reservation = reservation
+        self.reserve = reserve
+
+    @abstractmethod
+    def book_reserve(self):
+        pass
+
+    @abstractmethod
+    def book_print(self):
+        if self.reserve:
+            print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
+                  f'материал: {self.material},'f' зарезервирована')
+        else:
+            print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
+                  f'материал: {self.material}')
 
 
 book_1 = Books('Капитанская дочка', 'Пушкин', 200, True)
@@ -49,34 +65,37 @@ book_2 = Books('Идиот', 'Достоевский', 100, False)
 book_3 = Books('Сказка о золотом петушке', 'Пушкин', 20, False)
 book_4 = Books('Кобзар', 'Шевченко', 350, False)
 book_5 = Books('Катерина', 'Шевченко', 230, True)
-print(f'Название: {book_1.name}, Автор: {book_1.author}, страниц: {book_1.page_amount}, материал: {book_1.material},'
-      f' зарезервирована')
-print(f'Название: {book_2.name}, Автор: {book_2.author}, страниц: {book_2.page_amount}, материал: {book_2.material}')
-print(f'Название: {book_3.name}, Автор: {book_3.author}, страниц: {book_3.page_amount}, материал: {book_3.material}')
-print(f'Название: {book_4.name}, Автор: {book_4.author}, страниц: {book_4.page_amount}, материал: {book_4.material}')
-print(f'Название: {book_5.name}, Автор: {book_5.author}, страниц: {book_5.page_amount}, материал: {book_5.material}, '
-      f'зарезервирована')
+book_1.book_print()
+book_2.book_print()
+book_3.book_print()
+book_4.book_print()
+book_5.book_print()
 
 
 class ShoolBooks(Books):
-    def __init__(self, name, autor, page_amount, reservation, subject, school_class, tasks):
-        super().__init__(name, autor, page_amount, reservation)
+    def __init__(self, name, autor, page_amount, reserve, subject, school_class, tasks):
+        super().__init__(name, autor, page_amount, reserve)
         self.subject = subject
         self.school_class = school_class
         self.tasks = tasks
 
-    def reserve(self):
-        reservation = True
-        print(reservation)
+    def book_reserve(self):
+        self.reserve = True
+        print(self.reserve)
+
+    def book_print(self):
+        if self.reserve:
+            print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
+              f'предмет: {self.subject}, класс: {self.school_class}, зарезервирована')
+        else:
+            print(f'Название: {self.name}, Автор: {self.author}, страниц: {self.page_amount}, '
+            f'предмет: {self.subject}, класс: {self.school_class}')
 
 
 school_book_1 = ShoolBooks('Aлгебра', 'Иванов', 200, False, 'Математика', 9, True)
-school_book_2 = ShoolBooks('История Украины', 'Носов', 200, False, 'История', 8, False)
+school_book_2 = ShoolBooks('История Украины', 'Носов', 200, True, 'История', 8, False)
 school_book_3 = ShoolBooks('География Европы', 'Шевченко', 200, False, 'География', 5, True)
-school_book_1.reserve()
-print(f'Название: {school_book_1.name}, Автор: {school_book_1.author}, страниц: {school_book_1.page_amount}, '
-      f'предмет: {school_book_1.subject}, класс: {school_book_1.school_class}, зарезервирована')
-print(f'Название: {school_book_2.name}, Автор: {school_book_2.author}, страниц: {school_book_2.page_amount}, '
-      f'предмет: {school_book_2.subject}, класс: {school_book_2.school_class}')
-print(f'Название: {school_book_3.name}, Автор: {school_book_3.author}, страниц: {school_book_3.page_amount}, '
-      f'предмет: {school_book_3.subject}, класс: {school_book_3.school_class}')
+school_book_1.book_reserve()
+school_book_1.book_print()
+school_book_2.book_print()
+school_book_3.book_print()
