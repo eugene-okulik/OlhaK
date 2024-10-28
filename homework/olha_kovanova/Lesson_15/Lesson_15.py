@@ -68,20 +68,20 @@ cursor.executemany(
         ('OOP_princeples 3', subject_id_2),
         ('Set up and start the browsers 3', subject_id_3),
         ('API testing 3', subject_id_3)
-        ]
+    ]
 )
 db.commit()
-cursor.execute(f'SELECT * from lessons order by id desc limit 1')
+cursor.execute("SELECT * from lessons order by id desc limit 1")
 lesson_id_1 = cursor.fetchone()['id']
-cursor.execute(f'SELECT * from lessons order by id desc limit 1,1')
+cursor.execute("SELECT * from lessons order by id desc limit 1,1")
 lesson_id_2 = cursor.fetchone()['id']
-cursor.execute(f'SELECT * from lessons order by id desc limit 2,1')
+cursor.execute("SELECT * from lessons order by id desc limit 2,1")
 lesson_id_3 = cursor.fetchone()['id']
-cursor.execute(f'SELECT * from lessons order by id desc limit 3,1')
+cursor.execute("SELECT * from lessons order by id desc limit 3,1")
 lesson_id_4 = cursor.fetchone()['id']
-cursor.execute(f'SELECT * from lessons order by id desc limit 4,1')
+cursor.execute("SELECT * from lessons order by id desc limit 4,1")
 lesson_id_5 = cursor.fetchone()['id']
-cursor.execute(f'SELECT * from lessons order by id desc limit 5,1')
+cursor.execute("SELECT * from lessons order by id desc limit 5,1")
 lesson_id_6 = cursor.fetchone()['id']
 
 # 6. Поставьте своему студенту оценки (marks) для всех созданных вами занятий
