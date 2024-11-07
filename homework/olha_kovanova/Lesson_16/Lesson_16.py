@@ -31,7 +31,7 @@ db = mysql.connect(
 
 cursor = db.cursor(dictionary=True)
 select_query = '''
-    SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, sb.title AS subject_title, 
+    SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, sb.title AS subject_title,
     l.title AS lesson_title, m.value AS mark_value
     FROM students s
     INNER JOIN `groups` g ON s.group_id = g.id
@@ -41,7 +41,7 @@ select_query = '''
     INNER JOIN subjets sb ON sb.id = l.subject_id
     '''
 cursor.execute(select_query, ())
-#print("Content of the Database: ")
+# print("Content of the Database: ")
 db_data = cursor.fetchall()
 
 # for row in db_data:
