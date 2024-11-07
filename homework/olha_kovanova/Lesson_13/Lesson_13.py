@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timedelta
 
+
 base_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(base_path))
 hw_13_file_path = os.path.join(homework_path, 'eugene_okulik', 'hw_13', 'data.txt')
