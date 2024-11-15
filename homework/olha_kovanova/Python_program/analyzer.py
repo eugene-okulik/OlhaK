@@ -36,7 +36,6 @@ def main():
     # Define base paths
     base_path = os.path.dirname(__file__)
     homework_path = os.path.dirname(os.path.dirname(base_path))
-    data_path = os.path.dirname(os.path.dirname(homework_path))
     logs_path = os.path.join(homework_path, 'eugene_okulik', 'data', 'logs')
 
     # Set up argument parser
