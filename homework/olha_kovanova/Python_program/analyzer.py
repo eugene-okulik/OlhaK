@@ -33,15 +33,12 @@ def find_text_in_logs(log_dir, search_text):
 
 
 def main():
-    # Define base paths
-    base_path = os.path.dirname(__file__)
-    homework_path = os.path.dirname(os.path.dirname(base_path))
-    logs_path = os.path.join(homework_path, 'eugene_okulik', 'data', 'logs')
-
     # Set up argument parser
     parser = argparse.ArgumentParser(description='Text search in the logs')
-    # Remove the 'file' argument since we will use the default logs_path, otherwise we need to specify path to
-    # log file as well
+
+    # Adding argument for directory path where log files are located
+    parser.add_argument("log_directory", help="Path to the directory with log files")
+
     parser.add_argument("-d", "--date", help="Search date")
     parser.add_argument("--full", help="Full date match", action="store_true")
     parser.add_argument("--text", help="Text to search for", required=True)
@@ -49,8 +46,8 @@ def main():
     # Parse arguments
     args = parser.parse_args()
 
-    # Use the preset log directory path, don't ask for it as input
-    log_directory = logs_path
+    # Get the log directory from the argument
+    log_directory = args.log_directory
     search_word = args.text
 
     # Call the function to search for the text in logs
@@ -61,6 +58,7 @@ if __name__ == "__main__":
     main()
 
 # Commands to run:
-# By text: python C:\Users\olha.kovanova\OlhaK\homework\olha_kovanova\Python_program\analyzer.py --text WARN
-# By date: python C:\Users\olha.kovanova\OlhaK\homework\olha_kovanova\Python_program\analyzer.py --text WARN --date
-# 2024-11-01
+# By text: python C:\Users\olha.kovanova\OlhaK\homework\olha_kovanova\Python_program\analyzer.py C:\Users\olha.kovanova
+# \OlhaK\homework\eugene_okulik\data\logs --text WARN
+# By date: python C:\Users\olha.kovanova\OlhaK\homework\olha_kovanova\Python_program\analyzer.py C:\Users\olha.kovanova
+# \OlhaK\homework\eugene_okulik\data\logs --text WARN --date 2024-11-01
