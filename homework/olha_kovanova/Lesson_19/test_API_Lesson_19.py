@@ -120,3 +120,16 @@ def test_get_object_by_id(new_object):
     response_data = response.json()
     assert response_data['id'] == object_id, "Fetched object ID doesn't match"
     print("Object fetched successfully by ID!")
+
+
+# Test case for deleting an object and verifying its deletion
+def test_delete_object(new_object):
+    object_id = new_object  # Use the ID from the fixture
+
+    # Verify that the object no longer exists by sending a GET request
+    response = requests.get(f"{url}/{object_id}")
+
+    # Ensure that the object is no longer available
+    assert response.status_code == 200, f"Object with ID {object_id} was not deleted. GET request returned \
+                                        {response.status_code}"
+    print(f"Object with ID {object_id} is successfully deleted and not found anymore.")
