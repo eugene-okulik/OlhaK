@@ -1,0 +1,5 @@
+before test
+Created new object with ID: 898
+Object fetched successfully by ID!
+Deleted object with ID: 898
+after test
