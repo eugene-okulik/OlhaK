@@ -60,9 +60,9 @@ def test_put_a_object(new_object):
         }
     }
     headers = {'Content-Type': 'application/json'}
-    with allure.step(f'Run put request'):
+    with allure.step('Run put request'):
         response = requests.put(f"{url}/{object_id}", json=body, headers=headers)
-    with allure.step(f'Check that the update was successful'):
+    with allure.step('Check that the update was successful'):
         assert response.status_code == 200, "Failed to update object"
     response_data = response.json()
     assert response_data['name'] == "Olha's 2nd Object", "Object update failed"
