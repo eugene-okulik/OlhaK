@@ -1,6 +1,7 @@
 import pytest
 import requests
 import json
+import allure
 
 url = "http://167.172.172.115:52353/object"
 
@@ -21,35 +22,8 @@ def before_and_after_test():
     print("after test")
 
 
-# Define fixture for creating an object before each test and deleting it afterward
-@pytest.fixture
-def new_object():
-    # Create a new object and return its ID
-    body = {
-        "name": "Olha's Object",
-        "data": {
-            "color": "red",
-            "size": "medium"
-        }
-    }
-    headers = {'Content-Type': 'application/json'}
-    response = requests.post(url, json=body, headers=headers)
-
-    assert response.status_code == 200, "Failed to create new object"
-    response_data = response.json()
-    object_id = response_data['id']
-    print(f"Created new object with ID: {object_id}")
-
-    # Return the ID of the created object
-    yield object_id
-
-    # Cleanup after test: delete the created object
-    delete_response = requests.delete(f'{url}/{object_id}')
-    assert delete_response.status_code == 200, "Failed to delete the object"
-    print(f"Deleted object with ID: {object_id}")
-
-
 # Test case for creating multiple objects with different data using pytest.mark.parametrize
+@allure.story('Creating multiple objects')
 @pytest.mark.critical
 @pytest.mark.parametrize("name, color, size", [
     ("Olha's Object 1", "red", "medium"),
@@ -74,6 +48,7 @@ def test_create_object(name, color, size, new_object):
 
 
 # Test case for updating an object using PUT request
+@allure.story('Updating an object')
 @pytest.mark.medium
 def test_put_a_object(new_object):
     object_id = new_object  # Use the ID from the fixture
@@ -85,15 +60,17 @@ def test_put_a_object(new_object):
         }
     }
     headers = {'Content-Type': 'application/json'}
-    response = requests.put(f"{url}/{object_id}", json=body, headers=headers)
-
-    assert response.status_code == 200, "Failed to update object"
+    with allure.step('Run put request'):
+        response = requests.put(f"{url}/{object_id}", json=body, headers=headers)
+    with allure.step('Check that the update was successful'):
+        assert response.status_code == 200, "Failed to update object"
     response_data = response.json()
     assert response_data['name'] == "Olha's 2nd Object", "Object update failed"
     print("Object updated successfully with PUT!")
 
 
 # Test case for updating an object using PATCH request
+@allure.story('Updating an object')
 def test_patch_a_object(new_object):
     object_id = new_object  # Use the ID from the fixture
     body = {
@@ -112,9 +89,11 @@ def test_patch_a_object(new_object):
 
 
 # Test case for getting an object by ID
+@allure.story('Get an object')
 def test_get_object_by_id(new_object):
     object_id = new_object  # Use the ID from the fixture
-    response = requests.get(f"{url}/{object_id}")
+    with allure.step(f'Run get request for post with id {new_object}'):
+        response = requests.get(f"{url}/{object_id}")
 
     assert response.status_code == 200, "Failed to fetch object"
     response_data = response.json()
@@ -123,6 +102,7 @@ def test_get_object_by_id(new_object):
 
 
 # Test case for deleting an object and verifying its deletion
+@allure.description('Check that object has deleted')
 def test_delete_object(new_object):
     object_id = new_object  # Use the ID from the fixture
 

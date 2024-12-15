@@ -1,10 +1,12 @@
 import requests
 import json
+import allure
 
 
 url = "http://167.172.172.115:52353/object"
 
 
+@allure.story('Get an object')
 def all_posts():
     response = requests.get(url)
     if response.status_code == 200:
@@ -17,6 +19,7 @@ all_posts()
 
 
 # Delete created object
+@allure.story('Delete an object')
 def clear(object_id):
     response = requests.delete(f'{url}/{object_id}')
     if response.status_code == 200:
@@ -27,6 +30,7 @@ def clear(object_id):
 
 
 # create an object
+@allure.story('Creating multiple objects')
 def new_object():
     body = {
         "name": "Olha's Object",
@@ -50,6 +54,7 @@ def new_object():
 
 
 # Update an existing object (PUT request)
+@allure.story('Updating an object')
 def put_a_object():
     object_id = new_object()  # First create the object and get its ID
     body = {
@@ -81,6 +86,7 @@ put_a_object()
 
 
 # Update an existing object (PATCH request)
+@allure.story('Updating an object')
 def patch_a_object():
     object_id = new_object()  # First create the object and get its ID
     body = {
