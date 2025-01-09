@@ -1,0 +1,5 @@
+before test
+Created new object with ID: 2293
+New object 'Olha's Object 2' was added successfully with ID 2294
+Deleted object with ID: 2293
+after test

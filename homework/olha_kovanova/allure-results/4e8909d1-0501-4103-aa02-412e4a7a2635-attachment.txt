@@ -1,0 +1,5 @@
+before test
+Created new object with ID: 2297
+Object with ID 2297 is successfully deleted and not found anymore.
+Deleted object with ID: 2297
+after test

@@ -1,0 +1,5 @@
+before test
+Created new object with ID: 2304
+Object updated successfully with PUT!
+Deleted object with ID: 2304
+after test

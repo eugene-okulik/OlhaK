@@ -1,0 +1,2 @@
+Object with ID 2298 deleted successfully
+Testing completed
