@@ -1,8 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","41","test_patch_a_object","Lesson_19","Sat Dec 14 16:16:43 CET 2024","passed","Sat Dec 14 16:16:44 CET 2024","","test_API_Lesson_19","",""
-"","43","test_create_object[Olha's Object 2-blue-large]","Lesson_19","Sat Dec 14 16:16:43 CET 2024","passed","Sat Dec 14 16:16:43 CET 2024","","test_API_Lesson_19","",""
-"","43","test_create_object[Olha's Object 3-green-small]","Lesson_19","Sat Dec 14 16:16:43 CET 2024","passed","Sat Dec 14 16:16:43 CET 2024","","test_API_Lesson_19","",""
-"Check that object has deleted","37","test_delete_object","Lesson_19","Sat Dec 14 16:16:44 CET 2024","passed","Sat Dec 14 16:16:44 CET 2024","","test_API_Lesson_19","",""
-"","39","test_create_object[Olha's Object 1-red-medium]","Lesson_19","Sat Dec 14 16:16:43 CET 2024","passed","Sat Dec 14 16:16:43 CET 2024","","test_API_Lesson_19","",""
-"","39","test_get_object_by_id","Lesson_19","Sat Dec 14 16:16:44 CET 2024","failed","Sat Dec 14 16:16:44 CET 2024","","test_API_Lesson_19","",""
-"","44","test_put_a_object","Lesson_19","Sat Dec 14 16:16:43 CET 2024","passed","Sat Dec 14 16:16:43 CET 2024","","test_API_Lesson_19","",""

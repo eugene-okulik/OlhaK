@@ -1,2 +1,0 @@
-Object with ID 2306 deleted successfully
-Testing completed
