@@ -1,9 +1,10 @@
 import requests
+from olha_kovanova.test_api_olha_kovanova.endpoints.endpoint import Endpoint
 
 
-class CreateObject:
-    def __init__(self, base_url):
-        self.base_url = base_url
+class CreateObject(Endpoint):
+    def __init__(self, url):
+        super().__init__(url)
 
     def create_new_object(self, name, color, size):
         body = {
@@ -14,5 +15,4 @@ class CreateObject:
             }
         }
         headers = {'Content-Type': 'application/json'}
-        response = requests.post(f"{self.base_url}/object", json=body, headers=headers)
-        return response
+        self.response = requests.post(self.url, json=body, headers=headers)
