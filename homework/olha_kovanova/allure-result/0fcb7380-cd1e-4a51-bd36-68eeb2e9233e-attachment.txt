@@ -1,4 +1,0 @@
-before test
-Created new object with ID: 904
-Deleted object with ID: 904
-after test
