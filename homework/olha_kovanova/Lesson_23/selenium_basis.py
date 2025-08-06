@@ -5,17 +5,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
-from time import sleep
 
 
 @pytest.fixture()
 def driver():
     chrome_driver = webdriver.Chrome()
-    # chrome_driver.implicitly_wait(6)
-    sleep(3)
+    chrome_driver.implicitly_wait(6)
     chrome_driver.maximize_window()
     yield chrome_driver
-    # sleep(3)
 
 # Задание
 # Часть 1
