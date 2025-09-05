@@ -20,7 +20,8 @@ def driver():
     yield chrome_driver
     sleep(3)
 
-#Первый тест
+
+# Первый тест
 # http://testshop.qa-practice.com/
 #
 # откройте первый (Customizable Desk) товар в новой вкладке
@@ -41,7 +42,7 @@ def test_add_product_to_cart(driver):
     # open product in new tab
     ActionChains(driver).key_down(Keys.CONTROL).click(product_element).key_up(Keys.CONTROL).perform()
 
-    #switch to new tab
+    # switch to new tab
     tabs = driver.window_handles
     driver.switch_to.window(tabs[1])
 
@@ -49,7 +50,7 @@ def test_add_product_to_cart(driver):
     add_to_cart_btn = driver.find_element(By.ID, "add_to_cart")
     add_to_cart_btn.click()
 
-    #continue shopping
+    # continue shopping
 
     # wait for the modal
     continue_shopping_btn = WebDriverWait(driver, 10).until(
@@ -62,26 +63,20 @@ def test_add_product_to_cart(driver):
     driver.switch_to.window(tabs[0])
     driver.refresh()
 
-    #open cart from main tab
+    # open cart from main tab
     cart_link = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, "//a[@href='/shop/cart' and @aria-label='eCommerce cart']"))
     )
     cart_link.click()
 
-    #check that the product in the cart
+    # check that the product in the cart
     cart_product_title_elem = driver.find_element(By.XPATH, "//h6[contains(@class,'fw-bold')]")
     cart_product_title = cart_product_title_elem.text
     print(cart_product_title)  # "Customizable Desk (Steel, White)"
     assert product_name in cart_product_title, f"Expected '{product_name}' to be in '{cart_product_title}'"
 
-
-# Второй тест
-# https://magento.softwaretestingboard.com/gear/bags.html Навести мышку на первый товар -> кликнуть внизу карточки товара
-# на кнопку Add to compare -> Проверить, что товар появился слева на этой же странице в секции Compare Products
+# Второй тест https://magento.softwaretestingboard.com/gear/bags.html Навести мышку на первый товар -> кликнуть внизу
+# карточки товара на кнопку Add to compare -> Проверить, что товар появился слева на этой же странице в секции
+# Compare Products
 
 # 503 Service Unavailable
-
-
-
-
-
