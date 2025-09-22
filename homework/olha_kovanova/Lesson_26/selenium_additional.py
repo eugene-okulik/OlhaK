@@ -75,8 +75,24 @@ def test_add_product_to_cart(driver):
     print(cart_product_title)  # "Customizable Desk (Steel, White)"
     assert product_name in cart_product_title, f"Expected '{product_name}' to be in '{cart_product_title}'"
 
-# Второй тест https://magento.softwaretestingboard.com/gear/bags.html Навести мышку на первый товар -> кликнуть внизу
-# карточки товара на кнопку Add to compare -> Проверить, что товар появился слева на этой же странице в секции
-# Compare Products
 
-# 503 Service Unavailable
+# зайти на сайт http://testshop.qa-practice.com/
+# навести мышку на первы товар
+# нажать появившуюся кнопку корзины
+# в появившемся попапе проверить, что товар, на котором нажимали кнопку корзины, появился в этом попапе
+def test_add_to_cart_popup(driver):
+    driver.get('http://testshop.qa-practice.com/')
+    product_element = driver.find_element(By.XPATH, "//img[@alt='Customizable Desk']")
+    product_name = product_element.text
+    cart_btn = driver.find_element(By.XPATH, '//a[contains(@class, "a-submit") and @aria-label="Shopping cart"]')
+
+    ActionChains(driver).move_to_element(product_element).move_to_element(cart_btn).click(cart_btn).perform()
+
+    # Wait for the popup and check the product name
+    cart_product_title_elem = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//strong[contains(@class,"product-name") and '
+                                                  'contains(normalize-space(), "[FURN_0096] Customizable Desk")]'))
+    )
+    cart_product_title = cart_product_title_elem.text
+    print(cart_product_title)  # "[FURN_0096] Customizable Desk (Steel, White)"
+    assert product_name in cart_product_title, f"Expected '{product_name}' to be in '{cart_product_title}'"
