@@ -1,9 +1,10 @@
 from playwright.sync_api import Page, Dialog, expect, BrowserContext
 
 
-# Задание 1
-# Напишите тест, который заходит на страницу https://www.qa-practice.com/elements/alert/confirm, кликает на кнопку, чтобы
-# появился алерт, жмет Ok и проверяет, что на страние в секции "You selected" написано "Ok"
+# Задание 1 Напишите тест, который заходит на страницу https://www.qa-practice.com/elements/alert/confirm,
+# кликает на кнопку, чтобы появился алерт, жмет Ok и проверяет, что на страние в секции "You selected" написано "Ok"
+
+
 def test_accept_alert(page: Page):
     def accept_alert(alert: Dialog):
         alert.accept()
@@ -18,9 +19,9 @@ def test_accept_alert(page: Page):
     expect(result_text).to_have_text('Ok')
 
 # Задание 2
-# Напишите тест, который зайдет на страницу https://www.qa-practice.com/elements/new_tab/button, нажмет на кнопку Click,
-# в открывшемся табе проверит, что в результате написано "I am a new page in a new tab" и проверит, что на изначальной
-# вкладке кнопка Click - активна (enabled)
+# Напишите тест, который зайдет на страницу https://www.qa-practice.com/elements/new_tab/button, нажмет на кнопку
+# Click, в открывшемся табе проверит, что в результате написано "I am a new page in a new tab" и проверит, что на
+# изначальной вкладке кнопка Click - активна (enabled)
 
 
 def test_new_tab(page: Page, context: BrowserContext):
