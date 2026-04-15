@@ -2,7 +2,9 @@ import re
 from playwright.sync_api import expect
 from test_UI_PW_Olha_Kovanova.pages.base_page import BasePage
 from test_UI_PW_Olha_Kovanova.pages.locators.categories_page_locators import proceed_to_checkout_btn
-from test_UI_PW_Olha_Kovanova.pages.locators.product_details_page_locators import *
+from test_UI_PW_Olha_Kovanova.pages.locators.product_details_page_locators import product_title, product_price, \
+    product_image, custom_leg, custom_input, add_to_cart_btn, popup_custom_label, popup_custom_value, \
+    add_quantity_button, quantity_input
 
 
 class ProductPage(BasePage):
@@ -14,20 +16,44 @@ class ProductPage(BasePage):
         text = self.find(product_price).inner_text()
         return float(text.strip().replace("$", "").replace(",", ""))
 
-    def select_another_colour(self):
-        self.find(product_color).click()
+    def select_any_other_colour(self) -> str:
+        # Search for input who hasn't attributes 'checked'
+        inactive_input = self.page.locator("input.js_variant_change:not([checked])").first
+
+        inactive_input.wait_for(state="attached")
+
+        # Get colour name
+        color_name = inactive_input.get_attribute("data-value_name") or inactive_input.get_attribute("title")
+
+        if color_name is None:
+            self.page.wait_for_timeout(1000)
+            color_name = inactive_input.get_attribute("data-value_name")
+
+        inactive_input.click(force=True)
+
+        return str(color_name).strip()
+
+    def should_have_correct_image_variant(self, expected_colour: str):
+        if not expected_colour or expected_colour == "None":
+            raise AssertionError("Expected colour name is empty! Check select_any_other_colour.")
+
+        product_img = self.find("img.product_detail_img")
+
+        # Escape special characters and replace spaces with .*
+        # This will find "Steel, Black" even if the URL is "Steel%20Black"
+        clean_pattern = re.escape(expected_colour).replace(r"\ ", ".*")
+        regex = re.compile(rf".*{clean_pattern}.*", re.IGNORECASE)
+
+        expect(
+            product_img,
+            f"Image source should change to contain: {expected_colour}"
+        ).to_have_attribute("src", regex, timeout=10000)
 
     def hover_product_image(self):
         self.find(product_image).hover()
 
-    def wait_until_product_image_contains(self, text):
-        expect(self.find(product_image)).to_have_attribute("src", re.compile(f".*{text}.*"))
-
     def get_product_image_src(self):
         return self.find(product_image).get_attribute("src")
-
-    def should_have_black_product_image(self):
-        expect(self.find(product_image)).to_have_attribute("src", re.compile(".*Black.*"))
 
     def select_custom_legs(self):
         self.find(custom_leg).click()

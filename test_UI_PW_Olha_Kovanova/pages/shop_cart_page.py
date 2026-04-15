@@ -1,6 +1,8 @@
 from playwright.sync_api import expect
 from test_UI_PW_Olha_Kovanova.pages.base_page import BasePage
-from test_UI_PW_Olha_Kovanova.pages.locators.shop_cart_locators import *
+from test_UI_PW_Olha_Kovanova.pages.locators.product_details_page_locators import add_quantity_button
+from test_UI_PW_Olha_Kovanova.pages.locators.shop_cart_locators import total_product_price, continue_shopping_btn, \
+    checkout_btn
 from test_UI_PW_Olha_Kovanova.pages.locators.categories_page_locators import proceed_to_checkout_btn
 
 

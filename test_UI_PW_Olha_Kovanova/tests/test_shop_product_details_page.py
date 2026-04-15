@@ -6,14 +6,13 @@ import time
 
 def test_user_can_select_another_product_colour(categories_page, product_page):
     categories_page.open_page()
-    categories_page.wait_until_products_loaded()
     categories_page.open_first_product()
 
-    product_page.select_another_colour()
-    product_page.hover_product_image()
-    product_page.wait_until_product_image_contains("Black")
+    selected_colour = product_page.select_any_other_colour()
 
-    product_page.should_have_black_product_image()
+    product_page.hover_product_image()
+
+    product_page.should_have_correct_image_variant(selected_colour)
 
 
 def test_user_can_custom_product(categories_page, product_page):
@@ -34,7 +33,6 @@ def test_user_can_add_several_product_items_to_cart(categories_page, product_pag
     categories_page.open_page()
     categories_page.wait_until_products_loaded()
     categories_page.open_first_product()
-    time.sleep(2)
 
     product_page.increase_quantity()
     product_page.add_product_to_cart()

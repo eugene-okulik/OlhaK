@@ -22,7 +22,9 @@ def test_total_price_after_user_adjusts_product_quantities(categories_page, shop
 
 def test_user_can_continue_shopping(categories_page, shop_cart_page):
     categories_page.open_page()
-    categories_page.add_product_to_cart()
+
+    added_product = categories_page.add_product_to_cart()
+
     categories_page.proceed_to_checkout()
 
     shop_cart_page.wait_until_cart_popup_disappears()
@@ -30,7 +32,7 @@ def test_user_can_continue_shopping(categories_page, shop_cart_page):
 
     categories_page.wait_until_products_loaded()
     categories_page.should_have_products_loaded()
-    categories_page.should_contain_product("Customizable Desk")
+    categories_page.should_contain_product(added_product)
 
 
 def test_user_can_fill_checkout_address_form_and_proceed(categories_page, shop_cart_page, checkout_page):

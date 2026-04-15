@@ -1,7 +1,8 @@
 from playwright.sync_api import expect
 from test_UI_PW_Olha_Kovanova.pages.base_page import BasePage
-from test_UI_PW_Olha_Kovanova.pages.locators.address_form_page_locators import *
-from test_UI_PW_Olha_Kovanova.pages.locators.shipping_page_locators import *
+from test_UI_PW_Olha_Kovanova.pages.locators.address_form_page_locators import name_input, email_input, phone_input, \
+    street_input, zip_input, city_input, country_select, state_select, use_same_checkbox, continue_checkout_btn
+from test_UI_PW_Olha_Kovanova.pages.locators.shipping_page_locators import warning_message, save_address_btn
 
 
 class CheckoutPage(BasePage):
