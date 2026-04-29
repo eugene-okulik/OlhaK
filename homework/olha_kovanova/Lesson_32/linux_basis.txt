@@ -113,3 +113,26 @@ Modify: 2022-04-08 11:05:45.000000000 +0000
 Change: 2022-07-18 06:20:04.600289129 +0000
  Birth: -
 olhaKqa@qap:~$
+
+Result_3:
+/dev/null — character special file (символьное устройство)
+/dev/zero — character special file (символьное устройство)
+/dev/sda — No such file or directory (файл отсутствует в системе)
+/dev/tty — character special file (символьное устройство)
+/root — directory (директория)
+/etc/passwd — regular file (обычный файл)
+/proc/mounts — symbolic link (символическая ссылка)
+/bin/ls — regular file (обычный файл / исполняемый)
+/bin/zcat — regular file (обычный файл / исполняемый)
+
+Result_work with man command:
+Go to first line in file (Перейти к первой строке): g
+Go to last line in file (Перейти к последней строке): G
+Forward one window (Вперед на один экран): f (или Space)
+Forward one line (Вперед на одну строку): e (или j)
+Backward one line (Назад на одну строку): y (или k)
+Search forward for matching line (Поиск вперед): /pattern
+Search backward for matching line (Поиск назад): ?pattern
+Repeat previous search (Повторить поиск): n
+Repeat previous search in reverse direction (Повторить поиск в обратном направлении): N
+
